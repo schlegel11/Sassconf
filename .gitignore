@@ -1,0 +1,15 @@
+# Jetbrains
+.idea/
+*.iml
+*.iws
+
+# Rubymine Gem
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/

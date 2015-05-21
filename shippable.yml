@@ -1,0 +1,31 @@
+# language setting
+language: ruby
+
+# language versions
+rvm:
+  - 1.9.2
+  - 1.9.3
+  - 2.0.0-p353
+  - 2.1.0
+  - 2.1.1
+  - 2.1.2
+  - jruby
+  - jruby-19mode # JRuby in 1.9 mode
+  - jruby-head
+  - ruby-head
+  - ree
+
+# set env variables
+env:
+  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+
+# include
+branches:
+  only:
+    - master
+
+# notify
+notifications:
+     email:
+         recipients:
+             - develop@schlegel11.de

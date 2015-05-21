@@ -38,6 +38,8 @@ or only:
 in your console for show the help text.
 
 ###Config File
+Create a ruby config file like: "config.rb".
+
 For using options from Sass you have to use special variable prefixes "arg_NAME" and "varg_NAME".
 
  - "arg_NAME" for any [Sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html) options without a "=" sign like:
@@ -116,7 +118,6 @@ You can also set a list of values on the command line which you can use in your 
   production = false
   arg_no_cache = :no_value
   varg_style = production ? 'compressed' : 'expanded'
-  test_no_arg = 'no_arg'
   varg_sourcemap = 'none'
   ```
   
@@ -153,7 +154,6 @@ You can also set a list of values on the command line which you can use in your 
   production = false
   arg_no_cache = :no_value
   varg_style = production ? 'compressed' : 'expanded'
-  test_no_arg = 'no_arg'
   varg_sourcemap = 'none'
   arg_watch = "./:./out"
   ```
@@ -189,4 +189,35 @@ You can also set a list of values on the command line which you can use in your 
   border-color: #3BBFCE;
   color: #2ca2af;
   }
+  ```
+###Sample 3 - Use in JetBrains IDE (WebStorm)
+
+**Use Sassconf in e.g. WebStorm with a FileWatcher**
+
+All "*.scss" files are in a "sass" directory.
+All generated "*.css" files goes to a "css" directory.
+
+**In WebStorm create a normal SCSS FileWatcher:**
+
+  ```bash
+  File->Setting->Tools->File Watchers
+
+  Program: sassconf
+  Arguments: -c ./config.rb -a "$ProjectFileDir$,$FileName$,$FileNameWithoutAllExtensions$"
+  Working Directory: $ProjectFileDir$
+  ```
+
+**Your WebStorm project config.rb file:**
+
+ **config.rb**
+  ```ruby
+  project_dir = extern_args[0]
+  file_name = extern_args[1]
+  file_name_without_extension = extern_args[2]
+  
+  production = false
+  arg_no_cache = :no_value
+  varg_style = production ? 'compressed' : 'expanded'
+  varg_sourcemap = 'none'
+  arg_update = "\"#{project_dir}/sass/#{file_name}:#{project_dir}/css/#{file_name_without_extension}.css\""
   ```

@@ -53,8 +53,16 @@ module Sassconf
       end
     end
   end
+end
 
-  Object.include(Sassconf::CoreExtensions::Object)
-  String.include(Sassconf::CoreExtensions::String)
-  Hash.include(Sassconf::CoreExtensions::Hash)
+class Object
+    include Sassconf::CoreExtensions::Object
+end
+
+class String
+    include Sassconf::CoreExtensions::String
+end
+
+class Hash
+   include Sassconf::CoreExtensions::Hash
 end

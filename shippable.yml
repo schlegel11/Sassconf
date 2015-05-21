@@ -13,7 +13,6 @@ rvm:
   - jruby-19mode # JRuby in 1.9 mode
   - jruby-head
   - ruby-head
-  - ree
 
 # set env variables
 env:

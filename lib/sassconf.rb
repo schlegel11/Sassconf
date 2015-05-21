@@ -12,7 +12,7 @@ module Sassconf
     module HelpText
       USAGE = 'Usage: sassconf [options] [INPUT] [OUTPUT]'.paragraph
       DESCRIPTION = 'Description:'
-                        .newline.blank(3) { 'Adds configuration file to Sass converter.' }
+                        .newline.blank(3) { 'Adds configuration file to Sass preprocessor.' }
                         .newline.blank(3) { "Version #{Sassconf::VERSION}" }
                         .paragraph
       REQUIRED = 'Required:'

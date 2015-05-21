@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'sassconf/config_reader'
 
 class TestConfigReader < Minitest::Test
-  CONFIG_PATH = __dir__ + '/resources/Config.rb'
+  CONFIG_PATH = File.dirname(__FILE__) + '/resources/Config.rb'
 
   # Called before every test method runs. Can be used
   # to set up fixture information.

@@ -4,9 +4,9 @@ require 'sassconf/config_reader'
 
 class TestSassExecuter < Minitest::Test
 
-  SCSS_PATH = __dir__ + '/resources/Input.scss'
-  CSS_PATH = __dir__ + '/resources/Output.css'
-  CONFIG_PATH = __dir__ + '/resources/Config.rb'
+  SCSS_PATH = File.dirname(__FILE__) + '/resources/Input.scss'
+  CSS_PATH = File.dirname(__FILE__) + '/resources/Output.css'
+  CONFIG_PATH = File.dirname(__FILE__) + '/resources/Config.rb'
   # Called before every test method runs. Can be used
   # to set up fixture information.
   def setup

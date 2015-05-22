@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'sassconf'
+require File.dirname(__FILE__) + '/../lib/sassconf'
 
 Sassconf::start

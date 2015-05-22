@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
 require File.dirname(__FILE__) + '/../lib/sassconf'
+require 'irb'
 
 Sassconf::start
+IRB.start

@@ -1,4 +1,7 @@
-# Sassconf
+Sassconf
+========
+[![Build Status](https://api.shippable.com/projects/555cfb27edd7f2c052f63ad8/badge?branchName=master)](https://app.shippable.com/projects/555cfb27edd7f2c052f63ad8/builds/latest)
+[![Gem Version](https://badge.fury.io/rb/sassconf.svg?style=flat-square)](http://badge.fury.io/rb/sassconf)
 
 With the Sassconf command tool you can use a config file for defining your [Sass](https://github.com/sass/sass) options.
 If you liked the config file in any Compass environment then you'll like that one also because it's very similar :)
@@ -7,9 +10,15 @@ If you liked the config file in any Compass environment then you'll like that on
 
 - [Sass](https://github.com/sass/sass)
 
+**Supported and tested ruby versions**
+- Ruby
+  - Version 1.9.2 and up
+- JRuby
+  - 1.7.18 and up
+
 ## Installation
 
-Install it directly from [RubyGems](https://rubygems.org):
+Install it directly from [RubyGems](https://rubygems.org/gems/sassconf):
 
   ```bash
   gem install sassconf
@@ -200,7 +209,7 @@ All generated "*.css" files goes to a "css" directory.
 **In WebStorm create a normal SCSS FileWatcher:**
 
   ```bash
-  File->Setting->Tools->File Watchers
+  File->Settings->Tools->File Watchers
 
   Program: sassconf
   Arguments: -c ./config.rb -a "$ProjectFileDir$,$FileName$,$FileNameWithoutAllExtensions$"

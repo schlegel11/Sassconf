@@ -1,4 +1,7 @@
-# Sassconf
+Sassconf
+========
+[![Build Status](https://api.shippable.com/projects/555cfb27edd7f2c052f63ad8/badge?branchName=master)](https://app.shippable.com/projects/555cfb27edd7f2c052f63ad8/builds/latest)
+[![Gem Version](https://badge.fury.io/rb/sassconf.svg?style=flat-square)](http://badge.fury.io/rb/sassconf)
 
 With the Sassconf command tool you can use a config file for defining your [Sass](https://github.com/sass/sass) options.
 If you liked the config file in any Compass environment then you'll like that one also because it's very similar :)
@@ -15,7 +18,7 @@ If you liked the config file in any Compass environment then you'll like that on
 
 ## Installation
 
-Install it directly from [RubyGems](https://rubygems.org):
+Install it directly from [RubyGems](https://rubygems.org/gems/sassconf):
 
   ```bash
   gem install sassconf

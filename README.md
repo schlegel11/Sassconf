@@ -12,7 +12,7 @@ If you liked the config file in any Compass environment then you'll like that on
 
 **Supported and tested ruby versions**
 - Ruby
-  - Version 1.9.2 and up
+  - 1.9.2 and up
 - JRuby
   - 1.7.18 and up
 

@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.files = `git ls-files`.split("\n")
   spec.test_files = `git ls-files -- {test}/*`.split("\n")
   spec.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  spec.require_paths = 'lib'
+  spec.require_paths = ['lib']
 
   spec.required_ruby_version = '>= 1.9.2'
   spec.add_runtime_dependency 'sass', '>= 3.1.0'

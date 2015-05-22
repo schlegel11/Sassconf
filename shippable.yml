@@ -21,7 +21,7 @@ env:
 # include
 branches:
   only:
-    - master
+    - feature/Version-0.1.2
 
 # notify
 notifications:

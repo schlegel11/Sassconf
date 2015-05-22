@@ -24,6 +24,12 @@ Install it directly from [RubyGems](https://rubygems.org/gems/sassconf):
   gem install sassconf
   ```
 
+Make sure you have also installed a version of [Bundler](https://rubygems.org/gems/bundler):
+
+  ```bash
+  gem install bundler
+  ```
+
 ## Usage
 
 General usage:

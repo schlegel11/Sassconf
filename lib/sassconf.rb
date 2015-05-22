@@ -60,19 +60,21 @@ module Sassconf
     end
   end
 
-  begin
-    option_args = Parser.parse(ARGV)
-    config_reader = ConfigReader.new
-    executor = SassExecutor.new(ARGV[0], ARGV[1])
+  def self.start
+    begin
+      option_args = Parser.parse(ARGV)
+      config_reader = ConfigReader.new
+      executor = SassExecutor.new(ARGV[0], ARGV[1])
 
-    config_reader.eval_rb_file(option_args.config_path, option_args.extern_args)
-    argument_string = executor.create_all_argument_strings(config_reader.variable_with_value_hash, config_reader.variable_hash)
-    executor.execute(argument_string)
+      config_reader.eval_rb_file(option_args.config_path, option_args.extern_args)
+      argument_string = executor.create_all_argument_strings(config_reader.variable_with_value_hash, config_reader.variable_hash)
+      executor.execute(argument_string)
 
-  rescue OptionParser::MissingArgument, OptionParser::InvalidOption, SyntaxError, ArgumentError => e
-    puts e.message
-    logger.error(e)
-  ensure
-    exit
+    rescue OptionParser::MissingArgument, OptionParser::InvalidOption, SyntaxError, ArgumentError => e
+      puts e.message
+      logger.error(e)
+    ensure
+      exit
+    end
   end
 end

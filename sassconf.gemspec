@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version = Sassconf::VERSION
   spec.platform = Gem::Platform::RUBY
   spec.authors = ['Marcel Schlegel']
-  spec.homepage = ['http://sassconf.schlegel11.de']
+  spec.homepage = 'http://sassconf.schlegel11.de'
   spec.email = ['develop@schlegel11.de']
   spec.licenses = ['MIT']
 

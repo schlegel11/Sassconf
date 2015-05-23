@@ -2,6 +2,7 @@ Sassconf
 ========
 [![Build Status](https://api.shippable.com/projects/555cfb27edd7f2c052f63ad8/badge?branchName=master)](https://app.shippable.com/projects/555cfb27edd7f2c052f63ad8/builds/latest)
 [![Gem Version](https://badge.fury.io/rb/sassconf.svg?style=flat-square)](http://badge.fury.io/rb/sassconf)
+[![Code Climate](https://codeclimate.com/github/schlegel11/Sassconf/badges/gpa.svg)](https://codeclimate.com/github/schlegel11/Sassconf)
 
 With the Sassconf command tool you can use a config file for defining your [Sass](https://github.com/sass/sass) options.
 If you liked the config file in any Compass environment then you'll like that one also because it's very similar :)
@@ -113,7 +114,7 @@ You can also set a list of values on the command line which you can use in your 
  - -a, --args ARGS
    - Comma separated list of values e.g.: val_a, val_b,...
   
- - v, --verbose
+ - -v, --verbose
    - Print all log messages.
   
  - -?, -h, --help
@@ -151,7 +152,7 @@ You can also set a list of values on the command line which you can use in your 
   **output.css**
   ```css
   .navigation {
-  border-color: #3BBFCE;
+  border-color: #3BBECE;
   color: #2ca2af;
   }
   ```
@@ -195,7 +196,7 @@ You can also set a list of values on the command line which you can use in your 
   **/out/input.css**
   ```css
   .navigation {
-  border-color: #3BBFCE;
+  border-color: #3BBECE;
   color: #2ca2af;
   }
   ```

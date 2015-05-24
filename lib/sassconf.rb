@@ -41,7 +41,7 @@ module Sassconf
         end
 
         opts.on('-v', '--verbose', 'Print all log messages.') do
-          Sassconf::Logging.activate()
+          Sassconf::Logging.activate
         end
 
         opts.on('-?', '-h', '--help', 'Show this help. "Wow you really need this help?! ... Me too. ;)"') do

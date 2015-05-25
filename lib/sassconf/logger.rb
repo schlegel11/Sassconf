@@ -11,7 +11,7 @@ module Sassconf
     class << self
       @@active = false
 
-      def activate()
+      def activate
         @@active = true
       end
 

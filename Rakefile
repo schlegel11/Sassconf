@@ -7,5 +7,5 @@ Rake::TestTask.new(:test) do |test|
   test.test_files = FileList['test/test_*.rb']
 end
 
-desc "Run Tests"
+desc 'Run Tests'
 task :default => :test

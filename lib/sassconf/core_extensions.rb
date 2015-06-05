@@ -25,19 +25,16 @@ module Sassconf
         !(self.nil? || self.empty?)
       end
 
-      def newline(count = 1, side = :right)
-        count.times { side == :left ? self.insert(0, "\n") : self << "\n" }
-        self << (block_given? ? yield : '')
+      def newline(count = 1, side = :right, &block)
+        base_manipulation("\n", count, side, &block)
       end
 
-      def paragraph(count = 1, side = :right)
-        count.times { side == :left ? self.insert(0, "\n\n") : self << "\n\n" }
-        self << (block_given? ? yield : '')
+      def paragraph(count = 1, side = :right, &block)
+        base_manipulation("\n\n", count, side, &block)
       end
 
-      def blank(count = 1, side = :right)
-        count.times { side == :left ? self.insert(0, ' ') : self << ' ' }
-        self << (block_given? ? yield : '')
+      def blank(count = 1, side = :right, &block)
+        base_manipulation(' ', count, side, &block)
       end
 
       module ClassMethods
@@ -45,6 +42,14 @@ module Sassconf
           ''
         end
       end
+
+      def base_manipulation(char, count, side)
+        count.times { side == :left ? self.insert(0, char) : self << char }
+        self << (block_given? ? yield : '')
+      end
+
+      module_function :base_manipulation
+
     end
 
     module Hash
@@ -56,13 +61,13 @@ module Sassconf
 end
 
 class Object
-    include Sassconf::CoreExtensions::Object
+  include Sassconf::CoreExtensions::Object
 end
 
 class String
-    include Sassconf::CoreExtensions::String
+  include Sassconf::CoreExtensions::String
 end
 
 class Hash
-   include Sassconf::CoreExtensions::Hash
+  include Sassconf::CoreExtensions::Hash
 end

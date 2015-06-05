@@ -51,4 +51,9 @@ class TestConfigReader < Minitest::Test
     exception = assert_raises(SyntaxError) { @config_manager.eval_rb_file(ERROR_CONFIG_PATH) }
     assert_includes(exception.message, ":2: syntax error, unexpected ';'\narg_no_cache =; :no_value\n")
   end
+
+  def test_negative_watch_update
+    exception = assert_raises(ArgumentError) { @config_manager.watch_update(nil, 0) }
+    assert_equal('Activate is no boolean type.', exception.message)
+  end
 end

@@ -23,6 +23,7 @@ If you liked the config file in any Compass environment then you'll like that on
 ## Requirements
 
 - [Sass](https://github.com/sass/sass)
+- [Filewatcher] (https://github.com/thomasfl/filewatcher)
 
 **Supported and tested ruby versions**
 - Ruby

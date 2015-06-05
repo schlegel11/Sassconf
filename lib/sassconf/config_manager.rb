@@ -3,7 +3,7 @@ require_relative 'logger'
 require_relative 'core_extensions'
 
 module Sassconf
-  class ConfigReader
+  class ConfigManager
     include Logging
 
     VARIABLE_PREFIX = 'arg_'
@@ -18,8 +18,20 @@ module Sassconf
       inject_array = 'extern_args = create_array_from_string(@bind_extern_string_array);'
       source_file = File.read(file_path)
       collect_variables = '@vh = create_variable_hash(local_variables, binding); @vwvh = create_variable_with_value_hash(local_variables, binding)'
-      eval("#{inject_array} \n #{source_file} \n #{collect_variables}", reader_binding)
-      nil
+      logger.info("Eval config file: #{file_path}")
+      eval_line = __LINE__ + 1
+      eval("#{inject_array} \n #{source_file} \n #{collect_variables}", reader_binding, file_path, __LINE__ - eval_line)
+    end
+
+    def watch_update(file_path, activate)
+      if (activate)
+        Util.pre_check((file_path.is_string? and file_path.is_not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
+        FileWatcher.new([file_path]).watch do |filename, event|
+          if (event == :changed)
+            yield(filename)
+          end
+        end
+      end
     end
 
     def variable_hash

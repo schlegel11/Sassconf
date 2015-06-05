@@ -23,7 +23,8 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 1.9.2'
   spec.add_runtime_dependency 'sass', '>= 3.1.0'
+  spec.add_runtime_dependency 'filewatcher', '~> 0.5.1'
 
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'minitest', '>= 5.6.0'
+  spec.add_development_dependency 'minitest', '~> 5.6'
 end

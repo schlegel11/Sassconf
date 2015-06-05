@@ -1,3 +1,4 @@
+require 'open3'
 require_relative 'util'
 require_relative 'core_extensions'
 require_relative 'logger'
@@ -30,7 +31,36 @@ module Sassconf
     def execute(argument_string)
       Util.pre_check((argument_string.is_string? and argument_string.is_not_nil_or_empty?), 'Argument string is no string, nil or empty.')
 
-      system(SASS_PROCESS % [argument_string, @sass_input, @sass_output])
+      @pid = spawn(SASS_PROCESS % [argument_string, @sass_input, @sass_output])
+      logger.info("Spawn Sass process: #{@pid}")
+    end
+
+    def detach_and_kill
+      unless @pid.nil?
+        logger.info("Detach Sass process: #{@pid}")
+        Process.detach(@pid)
+        out, status = if Util.windows? then
+                        logger.info("Find child processes on MS-DOS")
+                        Open3.capture2("wmic process where (ParentProcessId=#{@pid.to_s}) get ProcessId")
+                      else
+                        logger.info("Find child processes on UNIX")
+                        Open3.capture2('ps', 'h', '--ppid', @pid.to_s, '-o', 'pid')
+                      end
+        logger.info("Kill process: #{@pid}")
+        Process.kill('KILL', @pid)
+        out.each_line do |elem|
+          pid = elem.to_i;
+          unless pid == 0
+            Process.kill('KILL', pid)
+            logger.info("Killed child process: #{pid}")
+          end
+        end
+      end
+    end
+
+    def wait
+      logger.info("Wait for Sass process: #{@pid}")
+      Process.wait(@pid) unless @pid.nil?
     end
 
     private

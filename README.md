@@ -7,6 +7,19 @@ Sassconf
 With the Sassconf command tool you can use a config file for defining your [Sass](https://github.com/sass/sass) options.
 If you liked the config file in any Compass environment then you'll like that one also because it's very similar :)
 
+## ChangeLog
+#### Version 0.1.5
+- Fixed Exception handling.
+
+- Improved syntax error handling.
+
+- Add Feature live reloading of config file.
+
+- Improved process handling.
+  - Childprocess handling on UNIX and MS-DOS.
+
+- Improved log messages.
+
 ## Requirements
 
 - [Sass](https://github.com/sass/sass)
@@ -15,7 +28,7 @@ If you liked the config file in any Compass environment then you'll like that on
 - Ruby
   - 1.9.2 and up
 - JRuby
-  - 1.7.18 and up
+  - 9.0.0.0.pre2 and up
 
 ## Installation
 
@@ -114,6 +127,10 @@ You can also set a list of values on the command line which you can use in your 
  - -a, --args ARGS
    - Comma separated list of values e.g.: val_a, val_b,...
   
+ - -r, --reload
+   - Watch config file for changes and reload it.
+     Useful if you are using "arg_watch" in your config.
+  
  - -v, --verbose
    - Print all log messages.
   
@@ -182,6 +199,12 @@ You can also set a list of values on the command line which you can use in your 
   
   ```bash
   sassconf -c ./config.rb
+  ```
+  
+  or with "live reloading":
+  
+  ```bash
+  sassconf -c ./config.rb -r
   ```
   
   **Console Output:**

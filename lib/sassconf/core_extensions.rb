@@ -10,6 +10,10 @@ module Sassconf
       def is_hash?
         false
       end
+
+      def is_boolean?
+        false
+      end
     end
 
     module String
@@ -57,6 +61,12 @@ module Sassconf
         true
       end
     end
+
+    module Boolean
+      def is_boolean?
+        true
+      end
+    end
   end
 end
 
@@ -70,4 +80,12 @@ end
 
 class Hash
   include Sassconf::CoreExtensions::Hash
+end
+
+class TrueClass
+  include  Sassconf::CoreExtensions::Boolean
+end
+
+class FalseClass
+  include  Sassconf::CoreExtensions::Boolean
 end

@@ -24,6 +24,7 @@ module Sassconf
     end
 
     def watch_update(file_path, activate)
+      Util.pre_check(activate.is_boolean?, 'Activate is no boolean type.')
       if (activate)
         Util.pre_check((file_path.is_string? and file_path.is_not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
         FileWatcher.new([file_path]).watch do |filename, event|

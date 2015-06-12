@@ -3,29 +3,28 @@ require_relative 'util'
 module Sassconf
   module CoreExtensions
     module Object
-      def is_string?
-        false
+      def self.def_false(*args)
+        raise ArgumentError, 'Argument is not a symbol' unless args.all? { |arg| arg.is_a?(Symbol) }
+        args.each { |arg| alias_method arg, :false_ }
       end
 
-      def is_hash?
-        false
-      end
-
-      def is_boolean?
+      def false_()
         false
       end
     end
+
+    Object.def_false(:string?, :hash?, :boolean?, :integer?, :array?, :not_nil_or_empty?)
 
     module String
       def self.included(base)
         base.extend(ClassMethods)
       end
 
-      def is_string?
+      def string?
         true
       end
 
-      def is_not_nil_or_empty?
+      def not_nil_or_empty?
         !(self.nil? || self.empty?)
       end
 
@@ -53,17 +52,22 @@ module Sassconf
       end
 
       module_function :base_manipulation
-
     end
 
     module Hash
-      def is_hash?
+      def hash?
+        true
+      end
+    end
+
+    module Array
+      def array?
         true
       end
     end
 
     module Boolean
-      def is_boolean?
+      def boolean?
         true
       end
     end
@@ -82,10 +86,14 @@ class Hash
   include Sassconf::CoreExtensions::Hash
 end
 
+class Array
+  include Sassconf::CoreExtensions::Array
+end
+
 class TrueClass
-  include  Sassconf::CoreExtensions::Boolean
+  include Sassconf::CoreExtensions::Boolean
 end
 
 class FalseClass
-  include  Sassconf::CoreExtensions::Boolean
+  include Sassconf::CoreExtensions::Boolean
 end

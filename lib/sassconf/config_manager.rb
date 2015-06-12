@@ -11,8 +11,8 @@ module Sassconf
     ARRAY_FROM_STRING_SEPARATOR = ','
 
     def eval_rb_file(file_path, extern_string_array = String.empty)
-      Util.pre_check((file_path.is_string? and file_path.is_not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
-      Util.pre_check((extern_string_array.is_string? and !extern_string_array.nil?), 'Extern string array is no string or nil.')
+      Util.pre_check((file_path.string? and file_path.not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
+      Util.pre_check(extern_string_array.string?, 'Extern string array is no string.')
 
       @bind_extern_string_array = extern_string_array
       inject_array = 'extern_args = create_array_from_string(@bind_extern_string_array);'
@@ -24,9 +24,9 @@ module Sassconf
     end
 
     def watch_update(file_path, activate)
-      Util.pre_check(activate.is_boolean?, 'Activate is no boolean type.')
+      Util.pre_check(activate.boolean?, 'Activate is no boolean type.')
       if (activate)
-        Util.pre_check((file_path.is_string? and file_path.is_not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
+        Util.pre_check((file_path.string? and file_path.not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
         FileWatcher.new([file_path]).watch do |filename, event|
           if (event == :changed)
             yield(filename)

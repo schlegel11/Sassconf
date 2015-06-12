@@ -40,10 +40,10 @@ class TestConfigReader < Minitest::Test
     assert_equal("\"rb\" file path is no string, nil, empty or doesn't exist.", exception.message)
 
     exception = assert_raises(ArgumentError) { @config_manager.eval_rb_file(CONFIG_PATH, 0) }
-    assert_equal('Extern string array is no string or nil.', exception.message)
+    assert_equal('Extern string array is no string.', exception.message)
 
     exception = assert_raises(ArgumentError) { @config_manager.eval_rb_file(CONFIG_PATH, nil) }
-    assert_equal('Extern string array is no string or nil.', exception.message)
+    assert_equal('Extern string array is no string.', exception.message)
 
     assert_equal(nil, @config_manager.variable_with_value_hash)
     assert_equal(nil, @config_manager.variable_hash)

@@ -82,7 +82,7 @@ module Sassconf
       puts e.message
       logger.error(e)
     ensure
-      @@executor.detach_and_kill
+      @@executor.detach_and_kill if defined?(@@executor)
       exit
     end
   end

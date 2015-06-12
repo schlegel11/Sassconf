@@ -22,10 +22,10 @@ class TestSassExecuter < Minitest::Test
 
   def test_negative_create_argument_with_value_string
     exception = assert_raises(ArgumentError) { @sass_executor.create_argument_with_value_string(String.empty) }
-    assert_equal('Argument hash is no hash or nil.', exception.message)
+    assert_equal('Argument hash is no hash.', exception.message)
 
     exception = assert_raises(ArgumentError) { @sass_executor.create_argument_with_value_string(nil) }
-    assert_equal('Argument hash is no hash or nil.', exception.message)
+    assert_equal('Argument hash is no hash.', exception.message)
   end
 
   def test_positive_create_argument_string
@@ -36,10 +36,10 @@ class TestSassExecuter < Minitest::Test
 
   def test_negative_create_argument_string
     exception = assert_raises(ArgumentError) { @sass_executor.create_argument_string(String.empty) }
-    assert_equal('Argument hash is no hash or nil.', exception.message)
+    assert_equal('Argument hash is no hash.', exception.message)
 
     exception = assert_raises(ArgumentError) { @sass_executor.create_argument_string(nil) }
-    assert_equal('Argument hash is no hash or nil.', exception.message)
+    assert_equal('Argument hash is no hash.', exception.message)
   end
 
   def test_positive_create_all_argument_strings
@@ -50,16 +50,16 @@ class TestSassExecuter < Minitest::Test
 
   def test_negative_create_all_argument_strings
     exception = assert_raises(ArgumentError) { @sass_executor.create_all_argument_strings(@config_manager.variable_with_value_hash, String.empty) }
-    assert_equal('Argument hash is no hash or nil.', exception.message)
+    assert_equal('Argument hash is no hash.', exception.message)
 
     exception = assert_raises(ArgumentError) { @sass_executor.create_all_argument_strings(@config_manager.variable_with_value_hash, nil) }
-    assert_equal('Argument hash is no hash or nil.', exception.message)
+    assert_equal('Argument hash is no hash.', exception.message)
 
     exception = assert_raises(ArgumentError) { @sass_executor.create_all_argument_strings(String.empty, @config_manager.variable_hash) }
-    assert_equal('Argument hash is no hash or nil.', exception.message)
+    assert_equal('Argument hash is no hash.', exception.message)
 
     exception = assert_raises(ArgumentError) { @sass_executor.create_all_argument_strings(nil, @config_manager.variable_hash) }
-    assert_equal('Argument hash is no hash or nil.', exception.message)
+    assert_equal('Argument hash is no hash.', exception.message)
   end
 
   def test_positive_execute

@@ -23,14 +23,11 @@ module Sassconf
       eval("#{inject_array} \n #{source_file} \n #{collect_variables}", reader_binding, file_path, __LINE__ - eval_line)
     end
 
-    def watch_update(file_path, activate)
-      Util.pre_check(activate.boolean?, 'Activate is no boolean type.')
-      if (activate)
-        Util.pre_check((file_path.string? and file_path.not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
-        FileWatcher.new([file_path]).watch do |filename, event|
-          if (event == :changed)
-            yield(filename)
-          end
+    def watch_update(file_path)
+      Util.pre_check((file_path.string? and file_path.not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
+      FileWatcher.new([file_path]).watch do |filename, event|
+        if (event == :changed)
+          yield(filename)
         end
       end
     end

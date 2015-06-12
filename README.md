@@ -8,7 +8,7 @@ With the Sassconf command tool you can use a config file for defining your [Sass
 If you liked the config file in any Compass environment then you'll like that one also because it's very similar :)
 
 ## ChangeLog
-#### Version 0.1.6
+#### Version 0.1.7 (0.1.6 was yanked)
 - Improved live reloading of config file.
   - Works now in all exception cases.
 

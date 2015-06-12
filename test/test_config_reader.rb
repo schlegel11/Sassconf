@@ -53,7 +53,11 @@ class TestConfigReader < Minitest::Test
   end
 
   def test_negative_watch_update
-    exception = assert_raises(ArgumentError) { @config_manager.watch_update(nil, 0) }
-    assert_equal('Activate is no boolean type.', exception.message)
+    exception = assert_raises(ArgumentError) { @config_manager.watch_update(nil) }
+    assert_equal("\"rb\" file path is no string, nil, empty or doesn't exist.", exception.message)
+    exception = assert_raises(ArgumentError) { @config_manager.watch_update(String.empty) }
+    assert_equal("\"rb\" file path is no string, nil, empty or doesn't exist.", exception.message)
+    exception = assert_raises(ArgumentError) { @config_manager.watch_update('/no/path') }
+    assert_equal("\"rb\" file path is no string, nil, empty or doesn't exist.", exception.message)
   end
 end

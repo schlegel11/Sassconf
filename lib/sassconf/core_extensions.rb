@@ -1,5 +1,3 @@
-require_relative 'util'
-
 module Sassconf
   module CoreExtensions
     module Object

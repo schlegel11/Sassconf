@@ -25,6 +25,7 @@ module Sassconf
 
     def watch_update(file_path)
       Util.pre_check((file_path.string? and file_path.not_nil_or_empty? and File.exist?(file_path)), "\"rb\" file path is no string, nil, empty or doesn't exist.")
+      Util.pre_check(block_given?, 'No block is given.')
       FileWatcher.new([file_path]).watch do |filename, event|
         if (event == :changed)
           yield(filename)

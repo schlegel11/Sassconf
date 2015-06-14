@@ -44,9 +44,10 @@ module Sassconf
       Util.pre_check((cmds.any? and cmds.all? { |elem| elem.string? }), 'cmds is empty or element is no string.')
 
       out, status = Open3.capture2(*cmds)
-      out.each_line do |elem|
-        pid = elem.to_i;
-        unless pid == 0 && block_given?
+      childs = out.each_line.map { |elem| elem.to_i }.select { |elem| elem != 0 }
+      if block_given?
+        childs.each do |elem|
+          pid = elem.to_i;
           yield(pid)
         end
       end
@@ -72,7 +73,7 @@ module Sassconf
     end
 
     def self.which(cmd)
-      exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+      exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : [String.empty]
       ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
         exts.each { |ext|
           exe = File.join(path, "#{cmd}#{ext}")

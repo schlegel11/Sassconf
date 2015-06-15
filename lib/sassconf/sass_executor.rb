@@ -62,7 +62,7 @@ module Sassconf
 
       logger.info("Create argument string from hash: #{argument_hash}")
       argument_hash.each { |key, value| argument_hash[key] = String.empty if value == :no_value }
-      argument_hash.reduce('') { |arg_string, (key, value)| arg_string.concat((argument_type % [key, value])) }.strip
+      argument_hash.reduce(String.empty) { |arg_string, (key, value)| arg_string.concat((argument_type % [key, value])) }.strip
     end
   end
 end

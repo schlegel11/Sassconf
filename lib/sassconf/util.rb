@@ -43,11 +43,11 @@ module Sassconf
     def process_childs(*cmds)
       Util.pre_check((cmds.any? and cmds.all? { |elem| elem.string? }), 'cmds is empty or element is no string.')
 
-      out, status = Open3.capture2(*cmds)
+      out, _ = Open3.capture2(*cmds)
       childs = out.each_line.map { |elem| elem.to_i }.select { |elem| elem != 0 }
       if block_given?
         childs.each do |elem|
-          pid = elem.to_i;
+          pid = elem.to_i
           yield(pid)
         end
       end
@@ -56,7 +56,7 @@ module Sassconf
     def process_exists?(*cmds)
       Util.pre_check((cmds.any? and cmds.all? { |elem| elem.string? }), 'cmds is empty or element is no string.')
 
-      out, status = Open3.capture2(*cmds)
+      out, _ = Open3.capture2(*cmds)
       out.each_line.select { |elem| elem.to_i != 0 }.any?
     end
   end

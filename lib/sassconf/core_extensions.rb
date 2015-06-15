@@ -6,7 +6,7 @@ module Sassconf
         args.each { |arg| alias_method arg, :false_ }
       end
 
-      def false_()
+      def false_
         false
       end
     end
@@ -41,6 +41,18 @@ module Sassconf
       module ClassMethods
         def empty
           ''
+        end
+
+        def newline(count = 1, side = :left, &block)
+          new.newline(count, side, &block)
+        end
+
+        def paragraph(count = 1, side = :left, &block)
+          new.paragraph(count, side, &block)
+        end
+
+        def blank(count = 1, side = :left, &block)
+          new.blank(count, side, &block)
         end
       end
 

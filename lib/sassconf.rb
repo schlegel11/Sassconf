@@ -3,8 +3,6 @@ require 'sassconf/config_manager'
 require 'sassconf/sass_executor'
 require 'optparse'
 require 'ostruct'
-require 'filewatcher'
-
 module Sassconf
   extend Logging
 
@@ -19,7 +17,7 @@ module Sassconf
                         .newline.blank(3) { 'Email: develop@schlegel11.de' }
                         .paragraph
       REQUIRED = 'Required:'
-      OPTIONAL = 'Optional:'.newline(1, :left)
+      OPTIONAL = String.newline { 'Optional:' }
     end
 
 
@@ -89,7 +87,7 @@ module Sassconf
 
   def live_reload(activate)
     Util.pre_check(activate.boolean?, 'Activate is no boolean type.')
-    if (activate)
+    if activate
       @@config_manager.watch_update(@@option_args.config_path) do |filename|
         begin
           logger.info("Config reload: #{filename}")

@@ -25,7 +25,7 @@ module Sassconf
     end
 
     def create_all_argument_strings(argument_value_hash, argument_hash)
-      create_argument_with_value_string(argument_value_hash).concat(' ').concat(create_argument_string(argument_hash))
+      create_argument_with_value_string(argument_value_hash).concat(String.blank).concat(create_argument_string(argument_hash))
     end
 
     def execute(argument_string)

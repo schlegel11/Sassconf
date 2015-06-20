@@ -36,7 +36,7 @@ module Sassconf
     end
 
     def detach_and_kill
-      if @pid.integer? && Util.process_exists?(@pid)
+      if Util.process_exists?(@pid)
         logger.info("Detach Sass process: #{@pid}")
         Process.detach(@pid)
 
@@ -52,7 +52,7 @@ module Sassconf
 
     def wait
       logger.info("Wait for Sass process: #{@pid}")
-      Process.wait(@pid) if @pid.integer? && Util.process_exists?(@pid)
+      Process.wait(@pid) if Util.process_exists?(@pid)
     end
 
     private

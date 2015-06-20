@@ -13,7 +13,7 @@ module Sassconf
       end
 
       def process_exists?(pid)
-        Util.pre_check((pid.integer? and pid > 0), 'Pid is no integer.')
+        return false unless pid.integer? && pid > 0
         CrossSystem.process_exists?("wmic process where (ProcessId=#{pid.to_s}) get ProcessId")
       end
     end
@@ -31,7 +31,7 @@ module Sassconf
       end
 
       def process_exists?(pid)
-        Util.pre_check((pid.integer? and pid > 0), 'Pid is no integer.')
+        return false unless pid.integer? && pid > 0
         CrossSystem.process_exists?('ps', '-o', 'pid=', pid.to_s)
       end
     end

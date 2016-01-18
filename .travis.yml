@@ -12,10 +12,6 @@ rvm:
   - jruby-head
   - ruby-head
 
-# set env variables
-env:
-  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
-
 # include
 branches:
   only:

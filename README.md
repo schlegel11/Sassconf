@@ -1,4 +1,4 @@
-Sassconf [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=schlegel11&url=https%3A%2F%2Fgithub.com%2Fschlegel11%2FSassconf&title=Sassconf&language=ruby&tags=github&category=software)
+Sassconf
 ========
 [![Build Status](https://travis-ci.org/schlegel11/Sassconf.svg?branch=master)](https://travis-ci.org/schlegel11/Sassconf)
 [![Gem Version](https://badge.fury.io/rb/sassconf.svg?style=flat-square)](http://badge.fury.io/rb/sassconf)

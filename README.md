@@ -1,6 +1,6 @@
 Sassconf [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=schlegel11&url=https%3A%2F%2Fgithub.com%2Fschlegel11%2FSassconf&title=Sassconf&language=ruby&tags=github&category=software)
 ========
-[![Build Status](https://api.shippable.com/projects/555cfb27edd7f2c052f63ad8/badge?branchName=master)](https://app.shippable.com/projects/555cfb27edd7f2c052f63ad8/builds/latest)
+[![Build Status](https://travis-ci.org/schlegel11/Sassconf.svg?branch=master)](https://travis-ci.org/schlegel11/Sassconf)
 [![Gem Version](https://badge.fury.io/rb/sassconf.svg?style=flat-square)](http://badge.fury.io/rb/sassconf)
 [![Code Climate](https://codeclimate.com/github/schlegel11/Sassconf/badges/gpa.svg)](https://codeclimate.com/github/schlegel11/Sassconf)
 

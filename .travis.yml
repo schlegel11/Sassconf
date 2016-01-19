@@ -1,6 +1,11 @@
 # language setting
 language: ruby
 
+# build systems
+os:
+  - linux
+  - osx
+
 # language versions
 rvm:
   - 1.9.2

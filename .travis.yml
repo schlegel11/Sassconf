@@ -4,7 +4,6 @@ language: ruby
 # build systems
 os:
   - linux
-  - osx
 
 # language versions
 rvm:

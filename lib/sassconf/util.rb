@@ -9,12 +9,12 @@ module Sassconf
     module ClassMethods
       def process_childs(ppid, &block)
         Util.pre_check((ppid.integer? and ppid > 0), 'Ppid is no integer.')
-        CrossSystem.process_childs("wmic process where (ParentProcessId=#{ppid.to_s}) get ProcessId", &block)
+        CrossSystem.process_childs("wmic process where (ParentProcessId=#{ppid}) get ProcessId", &block)
       end
 
       def process_exists?(pid)
-        Util.pre_check((pid.integer? and pid > 0), 'Pid is no integer.')
-        CrossSystem.process_exists?("wmic process where (ProcessId=#{pid.to_s}) get ProcessId")
+        return false unless pid.integer? && pid > 0
+        CrossSystem.process_exists?("wmic process where (ProcessId=#{pid}) get ProcessId")
       end
     end
   end
@@ -31,7 +31,7 @@ module Sassconf
       end
 
       def process_exists?(pid)
-        Util.pre_check((pid.integer? and pid > 0), 'Pid is no integer.')
+        return false unless pid.integer? && pid > 0
         CrossSystem.process_exists?('ps', '-o', 'pid=', pid.to_s)
       end
     end
@@ -43,10 +43,11 @@ module Sassconf
     def process_childs(*cmds)
       Util.pre_check((cmds.any? and cmds.all? { |elem| elem.string? }), 'cmds is empty or element is no string.')
 
-      out, status = Open3.capture2(*cmds)
-      out.each_line do |elem|
-        pid = elem.to_i;
-        unless pid == 0 && block_given?
+      out, _ = Open3.capture2(*cmds)
+      childs = out.each_line.map { |elem| elem.to_i }.select { |elem| elem != 0 }
+      if block_given?
+        childs.each do |elem|
+          pid = elem.to_i
           yield(pid)
         end
       end
@@ -55,7 +56,7 @@ module Sassconf
     def process_exists?(*cmds)
       Util.pre_check((cmds.any? and cmds.all? { |elem| elem.string? }), 'cmds is empty or element is no string.')
 
-      out, status = Open3.capture2(*cmds)
+      out, _ = Open3.capture2(*cmds)
       out.each_line.select { |elem| elem.to_i != 0 }.any?
     end
   end
@@ -72,7 +73,7 @@ module Sassconf
     end
 
     def self.which(cmd)
-      exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+      exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : [String.empty]
       ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
         exts.each { |ext|
           exe = File.join(path, "#{cmd}#{ext}")
@@ -86,7 +87,7 @@ module Sassconf
       cmds.all? { |cmd| which(cmd).not_nil_or_empty? }
     end
 
-    #Credits go to https://github.com/rdp/os
+    # Credits go to https://github.com/rdp/os
     def self.windows?
       if RUBY_PLATFORM =~ /cygwin/ # i386-cygwin
         false

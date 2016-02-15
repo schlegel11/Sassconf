@@ -3,6 +3,7 @@ Sassconf
 [![Build Status](https://travis-ci.org/schlegel11/Sassconf.svg?branch=master)](https://travis-ci.org/schlegel11/Sassconf)
 [![Gem Version](https://badge.fury.io/rb/sassconf.svg?style=flat-square)](http://badge.fury.io/rb/sassconf)
 [![Code Climate](https://codeclimate.com/github/schlegel11/Sassconf/badges/gpa.svg)](https://codeclimate.com/github/schlegel11/Sassconf)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/9fe5c4046f904c08ae61b0bd22050a68)](https://www.codacy.com/app/marcel_4/Sassconf)
 
 With the Sassconf command tool you can use a config file for defining your [Sass](https://github.com/sass/sass) options.
 If you liked the config file in any Compass environment then you'll like that one also because it's very similar :)
